@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\ecommerce-app\\EcommerceAPI\\EcommerceAPI.csproj": {}
+    "C:\\Code\\ecommerce-app\\backend\\EcommerceAPI\\EcommerceAPI.csproj": {}
   },
   "projects": {
-    "C:\\Code\\ecommerce-app\\EcommerceAPI\\EcommerceAPI.csproj": {
+    "C:\\Code\\ecommerce-app\\backend\\EcommerceAPI\\EcommerceAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\ecommerce-app\\EcommerceAPI\\EcommerceAPI.csproj",
+        "projectUniqueName": "C:\\Code\\ecommerce-app\\backend\\EcommerceAPI\\EcommerceAPI.csproj",
         "projectName": "EcommerceAPI",
-        "projectPath": "C:\\Code\\ecommerce-app\\EcommerceAPI\\EcommerceAPI.csproj",
+        "projectPath": "C:\\Code\\ecommerce-app\\backend\\EcommerceAPI\\EcommerceAPI.csproj",
         "packagesPath": "C:\\Users\\Hsu Sandar Swe\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\ecommerce-app\\EcommerceAPI\\obj\\",
+        "outputPath": "C:\\Code\\ecommerce-app\\backend\\EcommerceAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -65,9 +65,13 @@
               "target": "Package",
               "version": "[9.0.7, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[8.0.2, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
