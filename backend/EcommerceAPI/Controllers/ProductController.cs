@@ -3,6 +3,8 @@ using EcommerceAPI.Data;
 using EcommerceAPI.Models;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices.Marshalling;
+using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EcommerceAPI.Controllers
 {
@@ -17,12 +19,14 @@ namespace EcommerceAPI.Controllers
             _context = context;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult GetProducts()
         {
             return Ok(_context.Products.ToList());
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
@@ -31,6 +35,7 @@ namespace EcommerceAPI.Controllers
             return Ok(product);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult CreateProduct(CreateProduct createProduct)
         {
@@ -49,15 +54,18 @@ namespace EcommerceAPI.Controllers
                 Name = createProduct.Name,
                 Description = createProduct.Description,
                 Category = createProduct.Category,
-                Stock = createProduct.Stock
+                Stock = createProduct.Stock,
+                IsActive = true, 
+                CreatedAt = DateTime.Now
             };
 
-            product.Id = $"PROD{nextNumber:D5}";
+            product.Id = $"PROD{nextNumber:D4}";
             _context.Products.Add(product);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult UpdateProduct(int id, Product updatedProduct)
         {
@@ -73,6 +81,7 @@ namespace EcommerceAPI.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {

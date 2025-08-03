@@ -115,3 +115,4 @@ C:\Code\ecommerce-app\backend\EcommerceAPI\obj\Debug\net9.0\refint\EcommerceAPI.
 C:\Code\ecommerce-app\backend\EcommerceAPI\obj\Debug\net9.0\EcommerceAPI.pdb
 C:\Code\ecommerce-app\backend\EcommerceAPI\obj\Debug\net9.0\EcommerceAPI.genruntimeconfig.cache
 C:\Code\ecommerce-app\backend\EcommerceAPI\obj\Debug\net9.0\ref\EcommerceAPI.dll
+C:\Code\ecommerce-app\backend\EcommerceAPI\bin\Debug\net9.0\BCrypt.Net-Next.dll
