@@ -19,23 +19,22 @@ namespace EcommerceAPI.Controllers
             _context = context;
         }
 
-        [Authorize]
         [HttpGet]
         public IActionResult GetProducts()
         {
             return Ok(_context.Products.ToList());
         }
 
-        [Authorize]
+        
         [HttpGet("{id}")]
-        public IActionResult GetProduct(int id)
+        public IActionResult GetProduct(string id)
         {
             var product = _context.Products.Find(id);
             if (product == null) return NotFound();
             return Ok(product);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult CreateProduct(CreateProduct createProduct)
         {
@@ -65,9 +64,9 @@ namespace EcommerceAPI.Controllers
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct(int id, Product updatedProduct)
+        public IActionResult UpdateProduct(string id, Product updatedProduct)
         {
             var product = _context.Products.Find(id);
             if (product == null) return NotFound();
@@ -81,9 +80,9 @@ namespace EcommerceAPI.Controllers
             return NoContent();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
-        public IActionResult DeleteProduct(int id)
+        public IActionResult DeleteProduct(string id)
         {
             var product = _context.Products.Find(id);
             if (product == null) return NotFound();
