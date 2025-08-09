@@ -5,7 +5,7 @@ export default function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    API.get("/product").then((res) => setProducts(res.data));
+    API.get("/Product").then((res) => setProducts(res.data));
   }, []);
 
   return (

@@ -1,20 +1,20 @@
 import React,{useContext} from "react";
 import {Link} from "react-router-dom";
-import { AUthContext, AuthProvider } from "../context/AuthContext";
+import { AuthContext, AuthProvider } from "../context/AuthContext";
 
 const Navbar =()=>{
-    const {user, logout} =useContext(AUthContext);
+    const {user, logout} =useContext(AuthContext);
 
     return(
         <nav>
-            <link to="/">Home</link>  |   <link to="/products">Products</link>
+            <a href="/">Home</a>  |   <a href="/products">Products</a>    |       
             {user ? (
                 <>
                     <span>Welcome, {user}</span>
                     <button onClick={logout}>Logout</button>
                 </>
             ):(
-                <Link to="/login">Login</Link>
+                 <a href="/a">Login</a>
             )}
         </nav>
     );
