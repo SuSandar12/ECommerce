@@ -21,11 +21,41 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button type="submit">Login</button>
-    </form>
+    <div className="flex min-h-screen justify-center static bg-gray-100">
+      <div className="w-full max-w-md absolute rounded-2xl bg-white p-8 shadow-lg  mt-12">
+        <h2 className="mb-6 text-center text-2xl font-bold text-grey-800">
+          Login
+        </h2>
+
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label className="mb-1 block text-sm font-medium text-grey-600">
+              User Name :{" "}
+            </label>
+            <input
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label className="mb-1 block text-sm font-medium text-grey-600">
+              Password :{" "}
+            </label>
+
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:outline-none"
+            />
+          </div>
+          <button type="submit"
+          className="w-full rounded-lg bg-green-600 px-4 py-3 font-semibold text-white hover:bg-green-700">Login</button>
+        </form>
+      </div>
+    </div>
   );
 }
