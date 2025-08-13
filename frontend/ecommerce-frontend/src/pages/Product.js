@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import API from "../services/api";
+import { CartContext } from "../context/CartContext";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     API.get("/Product").then((res) => setProducts(res.data));
@@ -31,7 +33,7 @@ export default function Products() {
                 <p className="text-gray-500 text-sm mb-3">{p.description || "No description"}</p>
                 <div className="flex justify-between items-center">
                   <span className="text-primary font-bold">${p.price}</span>
-                  <button className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                  <button onClick={()=> addToCart(p)} className="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700">
                     Add to Cart
                   </button>
                 </div>
