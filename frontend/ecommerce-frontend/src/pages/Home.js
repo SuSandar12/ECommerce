@@ -1,12 +1,10 @@
 import { Carousel } from "flowbite-react";
-import banner1 from '../images/banner1.jpg'; 
-import banner2 from '../images/banner2.jpg'; 
 
 export default function Home() {
   return (
-    <Carousel>
-      <img src="{banner1}}" alt="Banner 1" />
-      <img src="{banner2}" alt="Banner 2" />
+    <Carousel className="h-96">
+      <img src="/images/banner1.jpg" alt="Banner 1" className="object-cover w-full h-full" />
+      <img src="/images/banner2.jpg" alt="Banner 2" className="object-cover w-full h-full" />
     </Carousel>
   );
 }
