@@ -32,6 +32,7 @@ namespace EcommerceAPI.Controllers
             {
                 Username = registerDto.Username,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password),
+                Email = registerDto.Email,
                 Roles = string.IsNullOrEmpty(registerDto.Role) ? "Customer" : registerDto.Role
             };
 
