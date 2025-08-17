@@ -18,6 +18,9 @@ public class Order
     public string PaymentMethod { get; set; } = "Cash On Delivery";
     public string ShippmentMethod { get; set; } = "Door to Door";
     public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
+    public string DeliveryName { get; set; }
+    public string DeliveryPhone { get; set; }
+    public string DeliveryAddress { get; set; }
 }
 public class OrderItem
 {
@@ -26,5 +29,11 @@ public class OrderItem
     public int ProductId { get; set; }
     public int Quantity { get; set; }
     public decimal Price { get; set; }
-    public Product Product{ get; set; }
+    public Product Product { get; set; }
+}
+public class CheckoutRequest
+{
+    public string Name { get; set; }
+    public string Address { get; set; }
+    public string PhoneNumber { get; set; }
 }

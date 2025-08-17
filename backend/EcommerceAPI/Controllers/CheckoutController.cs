@@ -15,8 +15,12 @@ namespace EcommerceAPI.Controllers
         }
 
         [HttpPost("{userId}")]
-        public async Task<IActionResult> Checkout(string userId)
+        public async Task<IActionResult> Checkout(string userId, [FromBody] CheckoutRequest request)
         {
+            if (string.IsNullOrWhiteSpace(request.Address) || string.IsNullOrWhiteSpace(request.PhoneNumber))
+                return BadRequest("Address and PhoneNumber are required.");
+
+            // Load cart items
             var cartItems = await _context.CartItems
                 .Include(c => c.Product)
                 .Where(c => c.UserId == userId)
@@ -25,9 +29,13 @@ namespace EcommerceAPI.Controllers
             if (!cartItems.Any())
                 return BadRequest("Cart is empty.");
 
+            // Create order
             var order = new Order
             {
                 UserId = userId,
+                DeliveryName = request.Name,
+                DeliveryAddress = request.Address,
+                DeliveryPhone = request.PhoneNumber,
                 PaymentMethod = "CashOnDelivery",
                 Status = "Pending",
                 Items = cartItems.Select(c => new OrderItem
@@ -35,7 +43,8 @@ namespace EcommerceAPI.Controllers
                     ProductId = c.ProductId,
                     Quantity = c.Quantity,
                     Price = c.Product.Price
-                }).ToList()
+                }).ToList(),
+                OrderDate = DateTime.UtcNow
             };
 
             _context.Orders.Add(order);
@@ -45,7 +54,9 @@ namespace EcommerceAPI.Controllers
             return Ok(new
             {
                 Message = "Order placed successfully with Cash on Delivery.",
-                OrderId = order.Id
+                OrderId = order.Id,
+                DeliveryAddress = order.DeliveryAddress,
+                PhoneNumber = order.DeliveryPhone
             });
         }
     }
