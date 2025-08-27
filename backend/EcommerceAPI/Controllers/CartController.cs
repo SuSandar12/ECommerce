@@ -52,6 +52,30 @@ namespace EcommerceAPI.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        [HttpPut("{userId}/{productId}")]
+        public async Task<IActionResult> UpdateCartItemQuantity(string userId, int productId, [FromBody] int Quantity)
+        {
+            var cartItem = await _context.CartItems.FirstOrDefaultAsync(c => c.UserId == userId && c.ProductId == productId);
+            if (cartItem == null)
+            {
+                return NotFound("Item Not Found");
+            }
+
+            if (Quantity <= 0)
+            {
+                _context.CartItems.Remove(cartItem);
+            }
+            else
+            {
+                cartItem.Quantity = Quantity;
+                _context.CartItems.Update(cartItem);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Cart is updated" });
+        }
     }
 
 }
