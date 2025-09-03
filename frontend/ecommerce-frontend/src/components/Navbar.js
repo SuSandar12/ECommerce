@@ -1,10 +1,10 @@
-import React, { useContext , useState} from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext, AuthProvider } from "../context/AuthContext";
 import { useCart, CartContext } from "../context/CartContext";
-import { ShoppingCart , User } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
 
-export default function Navbar({onCartClick}){
+export default function Navbar({ onCartClick }) {
   const { user, logout } = useContext(AuthContext);
   const { cartCount } = useContext(CartContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -24,30 +24,34 @@ export default function Navbar({onCartClick}){
           <button onClick={() => setDropdownOpen(!dropdownOpen)}>
             <User className="w-6 h-6" />
           </button>
-             {dropdownOpen && (
+          {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-40 bg-white text-black rounded-lg shadow-lg z-50">
-               {!user ? (
+              {!user ? (
                 <>
-                <Link
-                  to="/login"
-                  onClick={() => setDropdownOpen(false)}
-                  className="block px-4 py-2 hover:bg-gray-100 rounded-md"
-                >
-                  Login
-                </Link>
-                <button className="block w-full text-left px-4 py-2 hover:bg-gray-100 rounded-md">
-                  Register
-                </button>
+                  <a
+                    href="/login"
+                    onClick={() => setDropdownOpen(false)}
+                    className="block px-4 py-2 hover:bg-gray-100 rounded-md"
+                  >
+                    Login
+                  </a>
+                  <a
+                    href="/register"
+                    onClick={() => setDropdownOpen(false)}
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-100 rounded-md"
+                  >
+                    Register
+                  </a>
                 </>
               ) : (
                 <>
-                  <Link
-                    to="/profile"
+                  <a
+                    href="/profile"
                     className="block px-4 py-2 hover:bg-gray-100 rounded-md"
                     onClick={() => setDropdownOpen(false)}
                   >
                     Profile
-                  </Link>
+                  </a>
                   <button
                     onClick={() => {
                       logout();
@@ -76,4 +80,4 @@ export default function Navbar({onCartClick}){
       </div>
     </nav>
   );
-};
+}
