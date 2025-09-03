@@ -10,9 +10,11 @@ import CartDrawer from "./components/CartDrawer";
 
 function App() {
   const [isCartOpen, setCartOpen] = useState(false);
+  const [user, setUser] = useState(null);
   return (
     <Router>
-      <Navbar onCartClick={() => setCartOpen(true)} />
+      <Navbar onCartClick={() => setCartOpen(true)} 
+        />
       <CartDrawer isOpen={isCartOpen} onClose={() => setCartOpen(false)} />
       <Routes>
         <Route path="/" element={<Home />} />
