@@ -28,9 +28,11 @@ export default function CartDrawer({ isOpen, onClose }) {
       </div>
 
       <div className="absolute bottom-0 left-0 w-full p-4 border-t bg-white">
+        <a href="/cart">
         <button className="w-full bg-black text-white py-2 rounded-xl hover:bg-gray-800 transition">
           Checkout
         </button>
+        </a>
       </div>
     </div>
   );

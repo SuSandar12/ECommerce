@@ -6,6 +6,7 @@ import Products from "./pages/Product";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Contact from "./pages/Contact";
+import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </Router>
