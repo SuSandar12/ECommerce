@@ -25,6 +25,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/confirmation" element={<confirmation />} />
       </Routes>
       <Footer />
     </Router>

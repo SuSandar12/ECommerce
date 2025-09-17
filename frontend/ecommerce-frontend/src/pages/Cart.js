@@ -70,7 +70,6 @@ export default function CartPage() {
             <span>${subtotal + 5}</span>
           </div>
 
-          {/* Delivery Address */}
           <div>
             <h2 className="text-xl font-semibold border-b pb-2 mb-4">
               Delivery Information
@@ -106,11 +105,9 @@ export default function CartPage() {
                   rows={3}
                 />
               </div>
-            
             </div>
           </div>
 
-          {/* Delivery Option */}
           <div>
             <h3 className="text-md font-semibold mb-1 border-b pb-1">
               Delivery Option
@@ -121,7 +118,6 @@ export default function CartPage() {
             </select>
           </div>
 
-          {/* Payment Method */}
           <div>
             <h3 className="text-md font-semibold mb-1 border-b pb-1">
               Payment Method
@@ -132,11 +128,11 @@ export default function CartPage() {
               <option>Cash on Delivery</option>
             </select>
           </div>
-
-          {/* Checkout Button */}
-          <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
-            Proceed to Checkout
-          </button>
+          <a href="\confirmation">
+            <button className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+              Proceed to Checkout
+            </button>
+          </a>
         </div>
       </div>
     </div>
